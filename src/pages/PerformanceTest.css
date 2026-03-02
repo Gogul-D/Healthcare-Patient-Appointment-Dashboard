@@ -1,0 +1,63 @@
+/* Page background */
+.performance-page {
+  min-height: 100vh;
+  background: #f4f8fb;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+/* Card container */
+.performance-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 650px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+.performance-title {
+  color: #1976d2;
+  margin-bottom: 5px;
+}
+
+.performance-subtitle {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Input */
+.performance-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* Counter box */
+.counter-box {
+  margin-top: 20px;
+  padding: 15px;
+  background: #eef5ff;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.counter-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+/* Info section */
+.info-box {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
