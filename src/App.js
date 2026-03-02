@@ -1,24 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Patients from "./pages/Patients";
+import PatientDetails from "./pages/PatientDetails";
+import PerformanceTest from "./pages/PerformanceTest";
+
+const Layout = ({ children }) => {
+  const location = useLocation();
+
+  // Hide navbar on login page
+  const hideNavbar = location.pathname === "/login";
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+      {children}
+    </>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          {/* Default Route */}
+          <Route path="/" element={<Navigate to="/login" />} />
+
+          {/* Public */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Protected */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/patients"
+            element={
+              <ProtectedRoute>
+                <Patients />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/patient-details/:id"
+            element={
+              <ProtectedRoute>
+                <PatientDetails />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/performance-test"
+            element={
+              
+                <PerformanceTest />
+            
+            }
+          />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+    
   );
 }
 
